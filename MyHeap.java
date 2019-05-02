@@ -1,7 +1,17 @@
 public class MyHeap {
   private static void pushDown(int[] dat, int size, int ind) {
-    while(ind * 2 + 1 <= size) {//has branches?
-      
+    int temp = 0;
+    while(ind * 2 + 1 < size) {//has branches?
+      if(ind * 2 + 2 >= size) {//ind is at node with one branch only
+        if(dat[ind] < dat[ind * 2 + 1]) {
+          temp = dat[ind];
+          dat[ind] = dat[ind * 2 + 1];
+          dat[ind * 2 + 1] = temp;
+        }
+      }
+      else {
+
+      }
     }
   }
   private static void pushUp(int[] dat, int size, int ind) {
@@ -14,7 +24,7 @@ public class MyHeap {
 
   }
   public static void main(String[] args) {
-  int[] te = {4,8,3,6,2,5,7,8,0,1,3,3,7,9/*,5,9,4*/};
+  int[] te = {5,0,8,7,4,6};
     pushDown(te,te.length - 1,7);
     for(int q = 0; q < te.length; q++) {
       System.out.print(te[q] + ",");
