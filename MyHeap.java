@@ -2,15 +2,27 @@ public class MyHeap {
   private static void pushDown(int[] dat, int size, int ind) {
     int temp = 0;
     while(ind * 2 + 1 < size) {//has branches?
-      if(ind * 2 + 2 >= size) {//ind is at node with one branch only
-        if(dat[ind] < dat[ind * 2 + 1]) {
+      if(ind * 2 + 2 >= size) {//one branch only
+        if(dat[ind] < dat[ind * 2 + 1]) {//if branch is greater than ind, swap
           temp = dat[ind];
           dat[ind] = dat[ind * 2 + 1];
           dat[ind * 2 + 1] = temp;
         }
       }
-      else {
-
+      else {//two branches
+        if(Math.min(dat[ind * 2 + 1], dat[ind * 2 + 2]) < dat[ind]) {return;}//if sorted, then stop
+        else {//not sorted
+          if(Math.min(dat[ind * 2 + 1], dat[ind * 2 + 2]) == dat[ind * 2 + 1]) {//if smaller is left branch, swap with right
+            temp = dat[ind];
+            dat[ind] = dat[ind * 2 + 2];
+            dat[ind * 2 + 2] = temp;
+          }
+          else {//if smaller is right branch, swap with left
+            temp = dat[ind];
+            dat[ind] = dat[ind * 2 + 1];
+            dat[ind * 2 + 1] = temp;
+          }
+        }
       }
     }
   }
