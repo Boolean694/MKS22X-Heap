@@ -91,7 +91,7 @@ public class MyHeap {
   }
   public static void main(String[] args) {
   int[] te = {5,0,8,7,4,6};
-    pushDown(te,te.length - 1,7);
+    pushDown(te,te.length,0);
     for(int q = 0; q < te.length; q++) {
       System.out.print(te[q] + ",");
     }
