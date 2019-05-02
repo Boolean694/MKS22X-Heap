@@ -4,12 +4,46 @@ public class MyHeap {
       return;
     }
     else {
-      if(dat[ind * 2 + 1] < dat[ind] && dat[ind * 2 + 2] < dat[ind]) {return;}//if no more push down, stop
       if(ind * 2 + 2 < size) { //two branches
-        
+        if(dat[ind * 2 + 1] < dat[ind] && dat[ind * 2 + 2] < dat[ind]) {return;}//if no more push down, stop
+        if(dat[ind] < dat[ind * 2 + 1] && dat[ind] < dat[ind * 2 + 2]) {//if both branches larger than node
+          if(dat[ind * 2 + 1] >= dat[ind * 2 + 2]) {//if left branch is bigger than right branch, swap node with left, call recursion on new ind
+            int temp = dat[ind];
+            dat[ind] = dat[ind * 2 + 1];
+            dat[ind * 2 + 1] = temp;
+            pushDown(dat, size, ind * 2 + 1);
+            return;
+          }
+          else {//if right branch bigger than left, swap node with right, call recursion on new ind
+            int temp = dat[ind];
+            dat[ind] = dat[ind * 2 + 2];
+            dat[ind * 2 + 2] = temp;
+            pushDown(dat, size, ind * 2 + 2);
+            return;
+          }
+        }
+        else if(dat[ind] < dat[ind * 2 + 1]) {//if only left branch is bigger, swap with left
+          int temp = dat[ind];
+          dat[ind] = dat[ind * 2 + 1];
+          dat[ind * 2 + 1] = temp;
+          pushDown(dat, size, ind * 2 + 1);
+          return;
+        }
+        else {//if only right branch is bigger, swap with right
+          int temp = dat[ind];
+          dat[ind] = dat[ind * 2 + 2];
+          dat[ind * 2 + 2] = temp;
+          pushDown(dat, size, ind * 2 + 2);
+          return;
+        }
       }
       else {//one branch
-
+        if(dat[ind] < dat[ind * 2 + 1]) {
+          int temp = dat[ind];
+          dat[ind] = dat[ind * 2 + 1];
+          dat[ind * 2 + 1] = temp;
+        }
+        return;
       }
     }
     /*int temp = 0;
