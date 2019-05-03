@@ -56,7 +56,8 @@ public class MyHeap {
     }
   }
   public static void heapsort(int[] dat) {
-
+    heapify(dat);
+    
   }
   public static void main(String[] args) {
   int[] te = {4,8,3,6,2,5,7,9,0,1,3,3,7,4,5,8};
