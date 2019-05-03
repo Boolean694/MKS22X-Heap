@@ -49,7 +49,16 @@ public class MyHeap {
     }
   }
   private static void pushUp(int[] dat, int size, int ind) {
-
+    if(ind == 0) {return;}//if trying to pushup first element, stop
+    if((ind - 1) / 2 >= 0) {//if has parent
+      if(dat[ind] > dat[(ind - 1) / 2]) {//if kid larger than parent
+        int tempo = dat[ind];
+        dat[ind] = dat[(ind - 1) / 2];
+        dat[(ind - 1) / 2] = tempo;
+        pushUp(dat, size, (ind - 1) / 2);
+      }
+    }
+    else {return;}//if no parent, stop
   }
   public static void heapify(int[] dat) {
     for(int q = dat.length - 1; q >= 0; q--) {
