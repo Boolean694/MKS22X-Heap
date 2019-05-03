@@ -58,11 +58,13 @@ public class MyHeap {
   public static void heapsort(int[] dat) {
     heapify(dat);
     int tempe = 0;
+    int sizind = dat.length;
     for(int q = 0; q < dat.length; q++) {
+      sizind--;
       tempe = dat[0];//swap first element with last elem
       dat[0] = dat[dat.length - 1];
       dat[dat.length - 1] = tempe;
-      pushDown(dat, dat.length - 1, 0);//push swapped element down to proper position
+      pushDown(dat, sizind, 0);//push swapped element down to proper position
     }
   }
   public static void main(String[] args) {
