@@ -62,7 +62,7 @@ public class MyHeap {
       tempe = dat[0];//swap first element with last elem
       dat[0] = dat[dat.length - 1];
       dat[dat.length - 1] = tempe;
-      pushDown(dat, dat.length, 0);//push swapped element down to proper position
+      pushDown(dat, dat.length - 1, 0);//push swapped element down to proper position
     }
   }
   public static void main(String[] args) {
