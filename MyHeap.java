@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyHeap {
   private static void pushDown(int[] dat, int size, int ind) {
     if(ind * 2 + 1 >= size) {//if no more branches, stop
@@ -57,21 +58,15 @@ public class MyHeap {
   }
   public static void heapsort(int[] dat) {
     heapify(dat);
-    int tempe = 0;
     for(int q = 0; q < dat.length; q++) {
-      int sizind = dat.length;
-      sizind -= q;
-      tempe = dat[0];//swap first element with last elem
-      dat[0] = dat[dat.length - 1];
-      dat[dat.length - 1] = tempe;
-      pushDown(dat, dat.length - q, 0);//push swapped element down to proper position
+      int tempe = dat[0];//swap first element with last elem
+      dat[0] = dat[dat.length - (q + 1)];
+      dat[dat.length - (q + 1)] = tempe;
+      pushDown(dat, dat.length - (q + 1), 0);//push swapped element down to proper position
     }
   }
   public static void main(String[] args) {
   int[] te = {4,8,3,6,2,5,7,9,0,1,3,3,7,4,5,8};
     heapsort(te);
-    for(int q = 0; q < te.length; q++) {
-      System.out.print(te[q] + ",");
-    }
   }
 }
